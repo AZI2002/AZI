@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AZI Clothing</title>
+    <style>
+        :root {
+            /* Light mode colors */
+            --background-color-light: #f0f4f9; /* Kald hvit/blå */
+            --text-color-light: #333;
+            --primary-color-light: #e63946; /* Rød */
+            --secondary-color-light: #457b9d; /* Kald blå */
+            --header-background-light: #1d3557; /* Dyp blå */
+            --menu-background-light: #333;
+            --button-background-light: #1d3557;
+            --button-text-light: #fff;
+
+            /* Dark mode colors */
+            --background-color-dark: #2c2c2c;
+            --text-color-dark: #f1f1f1;
+            --primary-color-dark: #e63946;
+            --secondary-color-dark: #457b9d;
+            --header-background-dark: #000;
+            --menu-background-dark: #111;
+            --button-background-dark: #333;
+            --button-text-dark: #fff;
+        }
+
+        /* Light mode (default) */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color-light);
+            color: var(--text-color-light);
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        header {
+            background-color: var(--header-background-light);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 3em;
+        }
+
+        nav {
+            background-color: var(--menu-background-light);
+            padding: 15px;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        /* Main section */
+        main {
+            padding: 20px;
+            text-align: center;
+        }
+
+        main img {
+            max-width: 100%;
+            height: auto;
+            margin: 20px 0;
+        }
+
+        .vision-text {
+            background-color: white;
+            padding: 20px;
+            max-width: 800px;
+            margin: 20px auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            color: var(--text-color-light);
+            border: 2px solid var(--secondary-color-light);
+        }
+
+        footer {
+            background-color: var(--header-background-light);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Dark mode */
+        body.dark-mode {
+            background-color: var(--background-color-dark);
+            color: var(--text-color-dark);
+        }
+
+        header.dark-mode {
+            background-color: var(--header-background-dark);
+        }
+
+        nav.dark-mode {
+            background-color: var(--menu-background-dark);
+        }
+
+        footer.dark-mode {
+            background-color: var(--header-background-dark);
+        }
+
+        .vision-text.dark-mode {
+            background-color: var(--background-color-dark);
+            border-color: var(--secondary-color-dark);
+            color: var(--text-color-dark);
+        }
+
+        /* Language and theme selectors */
+        .selectors {
+            display: flex;
+            justify-content: flex-end;
+            padding: 10px;
+        }
+
+        .selectors select {
+            padding: 5px;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Language and Theme Selectors -->
+    <div class="selectors">
+        <select id="languageSelect" onchange="changeLanguage()">
+            <option value="en">English</option>
+            <option value="no">Norsk</option>
+            <option value="sv">Svenska</option>
+            <option value="da">Dansk</option>
+        </select>
+
+        <select id="themeSelect" onchange="toggleTheme()">
+            <option value="light">Light</option>
+            <option value="dark">Dark</option>
+        </select>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <h1 id="brand">AZI</h1>
+    </header>
+
+    <!-- Navigation Menu -->
+    <nav>
+        <ul>
+            <li><a href="#all" id="menuAll">All</a></li>
+            <li><a href="#hats" id="menuHats">Hats</a></li>
+            <li><a href="#jackets" id="menuJackets">Jackets</a></li>
+            <li><a href="#accessories" id="menuAccessories">Accessories</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content with Image and Vision -->
+    <main>
+        <img src="your-photo.jpg" alt="AZI Winter Collection" id="mainImage">
+        <div class="vision-text" id="visionText">
+            <h2>Our Vision</h2>
+            <p id="visionMessage">At AZI, we are committed to offering high-quality winter clothing that combines style and functionality. Our collection is inspired by the cold, beautiful landscapes of Norway.</p>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 AZI - All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript for Language and Theme Selection -->
+    <script>
+        // Change language
+        function changeLanguage() {
+            var language = document.getElementById("languageSelect").value;
+
+            var texts = {
+                en: {
+                    brand: "AZI",
+                    menuAll: "All",
+                    menuHats: "Hats",
+                    menuJackets: "Jackets",
+                    menuAccessories: "Accessories",
+                    visionTitle: "Our Vision",
+                    visionMessage: "At AZI, we are committed to offering high-quality winter clothing that combines style and functionality. Our collection is inspired by the cold, beautiful landscapes of Norway."
+                },
+                no: {
+                    brand: "AZI",
+                    menuAll: "Alt",
+                    menuHats: "Luer",
+                    menuJackets: "Jakker",
+                    menuAccessories: "Tilbehør",
+                    visionTitle: "Vår Visjon",
+                    visionMessage: "Hos AZI er vi dedikert til å tilby høykvalitets vinterklær som kombinerer stil og funksjonalitet. Vår kolleksjon er inspirert av de kalde, vakre landskapene i Norge."
+                },
+                sv: {
+                    brand: "AZI",
+                    menuAll: "Allt",
+                    menuHats: "Mössor",
+                    menuJackets: "Jackor",
+                    menuAccessories: "Accessoarer",
+                    visionTitle: "Vår Vision",
+                    visionMessage: "På AZI är vi dedikerade till att erbjuda vinterkläder av hög kvalitet som kombinerar stil och funktionalitet. Vår kollektion är inspirerad av de kalla, vackra landskapen i Norge."
+                },
+                da: {
+                    brand: "AZI",
+                    menuAll: "Alt",
+                    menuHats: "Hatte",
+                    menuJackets: "Jakker",
+                    menuAccessories: "Tilbehør",
+                    visionTitle: "Vores Vision",
+                    visionMessage: "Hos AZI er vi dedikerede til at tilbyde vintertøj af høj kvalitet, der kombinerer stil og funktionalitet. Vores kollektion er inspireret af de kolde, smukke landskaber i Norge."
+                }
+            };
+
+            document.getElementById("brand").textContent = texts[language].brand;
+            document.getElementById("menuAll").textContent = texts[language].menuAll;
+            document.getElementById("menuHats").textContent = texts[language].menuHats;
+            document.getElementById("menuJackets").textContent = texts[language].menuJackets;
+            document.getElementById("menuAccessories").textContent = texts[language].menuAccessories;
+            document.getElementById("visionText").querySelector("h2").textContent = texts[language].visionTitle;
+            document.getElementById("visionMessage").textContent = texts[language].visionMessage;
+        }
+
+        // Toggle between light and dark theme
+        function toggleTheme() {
+            var
